@@ -15,8 +15,15 @@ public class Tarefa {
     @Column(columnDefinition = "TEXT")
     private String descricao;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusTarefa status;
+
+    public String toString(){
+
+        return "Tarefa{" + "id = " + id + ", Título = " +  titulo + ", Descrição = " + descricao + ", Status = " + status;
+
+    }
 
     public Tarefa(){
 
@@ -30,5 +37,37 @@ public class Tarefa {
 
         this.status = StatusTarefa.PENDENTE;
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public StatusTarefa getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusTarefa status) {
+        this.status = status;
     }
 }
