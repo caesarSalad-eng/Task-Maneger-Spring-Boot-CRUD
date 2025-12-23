@@ -3,13 +3,13 @@ package com.br.task_maneger_console_springBoot.runner;
 import com.br.task_maneger_console_springBoot.service.TarefaService;
 import org.springframework.boot.CommandLineRunner;
 import com.br.task_maneger_console_springBoot.model.Tarefa;
-import com.br.task_maneger_console_springBoot.model.StatusTarefa;
-
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class Menu implements CommandLineRunner {
 
     private final Scanner sc;
@@ -23,15 +23,17 @@ public class Menu implements CommandLineRunner {
 
     }
 
+    @Override
     public void run(String... args){
 
             while (true){
-            menu();
+
+                Menu();
 
         }
     }
 
-    private void menu(){
+    private void Menu(){
 
         int opcao;
 
@@ -168,6 +170,8 @@ public class Menu implements CommandLineRunner {
 
     private void concluirTarefa(){
 
+        System.out.println("\n== CONCLUIR TAREFA ==");
+
         System.out.println("Digite o ID da tarefa que deseja concluir");
         Long id = sc.nextLong();
         sc.nextLine();
@@ -192,7 +196,24 @@ public class Menu implements CommandLineRunner {
 
     private void deletarTarefa(){
 
-        
+        System.out.println("\n== DELETAR TAREFA==");
+
+        System.out.println("Digite o ID da Tareda que desaja deletar:  ");
+        Long id = sc.nextLong();
+        sc.nextLine();
+
+        boolean deletado = tarefaService.deletarTarefa(id);
+
+        if (deletado){
+
+            System.out.println("Tarefa deletada com Sucesso!!");
+
+        }else{
+
+            System.out.println("Tarefa não encontrada");
+
+        }
+
 
     }
 
